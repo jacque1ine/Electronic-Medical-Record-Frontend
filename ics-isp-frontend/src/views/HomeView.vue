@@ -1,18 +1,33 @@
 <template>
-  <HelloWorld />
+  <button @click="saveCalendar">Submit</button>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-
-// Components
-import HelloWorld from '../components/HelloWorld.vue';
+import calendarDataService from "../services/calDataService"
 
 export default defineComponent({
   name: 'HomeView',
 
-  components: {
-    HelloWorld,
-  },
+  methods: {
+    saveCalendar() {
+      var data = {
+        appointmentTitle: "sample",
+        dateTime: "sample",
+        patientHCNumber: "sample",
+        appointmentdesc: "sample",
+        notes: "sample"
+      };
+
+      calendarDataService.create(data)
+        .then(response => {
+          console.log(response.data);
+          console.log("Success")
+        })
+        .catch(e => {
+          console.log(e);
+        })
+    }
+  }
 });
 </script>
