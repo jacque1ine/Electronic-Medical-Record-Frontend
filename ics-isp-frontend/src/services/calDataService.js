@@ -16,12 +16,6 @@ class calendarDataService {
     delete(id) {
         return http.delete(`/calendar/${id}`);
     }
-    findByTitle(title) {
-        return http.get(`/tutorials?title=${title}`);
-    }
-    findByTime(time) {
-        return http.get(`/tutorials?dateTime=${time}`);
-    }
 }
 
 export default new calendarDataService();
