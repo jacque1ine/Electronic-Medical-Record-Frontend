@@ -21,7 +21,7 @@
               block
               xlarge
               @click="latestVisits">
-              Latest Visits
+              Vist History
             </v-btn>
           </v-col>
       </v-row>
@@ -49,7 +49,7 @@ export default {
         this.$router.push({ name: 'PatientInfo' });
     },
     latestVisits(){
-        this.$router.push({ name: 'LatestVisits' });
+        this.$router.push({ name: 'VisitHistory' });
     },
     labRecords(){
         this.$router.push({ name: 'LabRecords' });
