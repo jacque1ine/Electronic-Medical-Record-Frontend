@@ -1,8 +1,5 @@
 <template>
-<div>
-  <h1>Current Patients</h1>
-
-<table class="table align-middle mb-0 bg-white">
+    <table class="table align-middle mb-0 bg-white">
   <thead class="bg-light">
     <tr>
       <th>Name</th>
@@ -112,36 +109,4 @@
     </tr>
   </tbody>
 </table>
-  <!-- <button @click="saveCalendar">Submit</button> -->
-</div>
 </template>
-
-<script>
-import { defineComponent } from 'vue';
-import calendarDataService from "../services/calDataService"
-
-export default defineComponent({
-  name: 'HomeView',
-
-  methods: {
-    saveCalendar() {
-      var data = {
-        appointmentTitle: "sample",
-        dateTime: "sample",
-        patientHCNumber: "sample",
-        appointmentdesc: "sample",
-        notes: "sample"
-      };
-
-      calendarDataService.create(data)
-        .then(response => {
-          console.log(response.data);
-          console.log("Success")
-        })
-        .catch(e => {
-          console.log(e);
-        })
-    }
-  }
-});
-</script>
