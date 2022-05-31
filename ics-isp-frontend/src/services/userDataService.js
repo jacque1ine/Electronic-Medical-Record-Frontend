@@ -31,8 +31,8 @@ class userDataService {
         return http.get(`/users?title=${doctorID}`)
     }
 
-    findBySignInID(signInID){
-        return http.get(`/users?title=${signInID}`)
+    findByCred(signInID,password){
+        return http.get(`/users/${signInID}/${password}`)
     }
 
     findByPassword(password){
