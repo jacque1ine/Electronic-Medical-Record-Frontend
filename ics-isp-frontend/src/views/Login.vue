@@ -57,8 +57,16 @@ export default {
   methods: {
     async auth() {
       let authname = await userDataService.findByCred(this.username,this.password);
-      console.log(this.username + "" + this.password)
-      console.log(authname.username + " Success");
+      authname = JSON.parse(JSON.stringify(authname));
+      if (authname.data[0] == null || authname.data[0] == undefined) {
+        alert("Please enter a valid username and password")
+      }
+      else {
+        console.log(this.username + "" + this.password)
+        console.log(authname.data[0]);
+        sessionStorage.setItem("user", JSON.stringify(authname.data[0]));
+      }
+
     }
   },
 }
