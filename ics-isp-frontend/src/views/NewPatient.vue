@@ -83,12 +83,12 @@
       required
     ></v-text-field>
 
-    <v-text-field
+    <!-- <v-text-field
       v-model="status"
       name="status"
       label="status"
       required
-    ></v-text-field>
+    ></v-text-field> -->
 
  
     <v-btn
@@ -129,10 +129,10 @@ export default {
     async onSubmit(e) {
       e.preventDefault();
  
-      // if (!this.HCnumber ||!this.firstName || !this.lastName || !this.phoneNumber || !this.email ||!this.address || !this.age ||!this.sex || !this.height || !this.weight || !this.status) {
-      //   alert("All fields are mandatory");
-      //   return;
-      // }
+      if (!this.HCNumber ||!this.firstName || !this.lastName || !this.phoneNumber || !this.email ||!this.address || !this.age ||!this.sex || !this.height || !this.weight) {
+        alert("All fields are mandatory");
+        return;
+      }
  
       const newContact = {
         HCNumber: this.HCNumber,
@@ -145,7 +145,7 @@ export default {
         age: this.age, 
         height: this.height, 
         weight: this.weight,
-        status: this.status, 
+        status: "Absent", 
        
        
         
@@ -169,7 +169,7 @@ export default {
       this.sex=""; 
       this.height=""; 
       this.weight=""; 
-      this.status=""; 
+      // this.status=""; 
   
  
       document.querySelector("v-form").reset();
