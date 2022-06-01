@@ -1,10 +1,17 @@
 <template>
 
-<div class = "content">
+<div class = "container mt-10">
   <v-form ref="form"
     v-model="valid"
     lazy-validation
       @submit="onSubmit" class="add-form">
+
+    <v-text-field
+      v-model="HCNumber"
+      name="HCNumber"
+      label="HCNumber"
+      required
+    ></v-text-field>
 
     <v-text-field
       v-model="firstName"
@@ -20,33 +27,66 @@
       required
     ></v-text-field>
 
-    <v-text-field
-      v-model="HCNumber"
-      name="HCNumber"
-      label="HCNumber"
+      <v-text-field
+      v-model="phoneNumber"
+      name="phoneNumber"
+      label="Phone Number"
       required
     ></v-text-field>
 
-     <v-text-field
-      v-model="username"
-      name="email"
-      label="email"
-      required
-    ></v-text-field>
-    
-    
      <v-text-field
       v-model="email"
       name="email"
       label="email"
       required
     ></v-text-field>
-  
+    
+     <v-text-field
+      v-model="address"
+      name="address"
+      label="address"
+      required
+    ></v-text-field>
+    
+    <v-text-field
+      v-model="relations"
+      name="relations"
+      label="relations"
+      required
+    ></v-text-field>
 
     <v-text-field
-      v-model="phone"
-      name="phone"
-      label="Phone Number"
+      v-model="age"
+      name="age"
+      label="age"
+      required
+    ></v-text-field>
+  
+    <v-text-field
+      v-model="sex"
+      name="sex"
+      label="sex"
+      required
+    ></v-text-field>
+
+    <v-text-field
+      v-model="height"
+      name="height"
+      label="height"
+      required
+    ></v-text-field>
+
+    <v-text-field
+      v-model="weight"
+      name="weight"
+      label="weight"
+      required
+    ></v-text-field>
+
+    <v-text-field
+      v-model="status"
+      name="status"
+      label="status"
       required
     ></v-text-field>
 
@@ -65,15 +105,22 @@
 </template>
  
 <script>
+import patientDataService from "../services/patientDataService";
 export default {
   data(){
     return  {
+      HCNumber: "",
       firstName: "",
       lastName: "",
-      phone: "",
+      phoneNumber: "",
       email: "",
-      hcnumber: "",
       address: "",
+      relations: "",
+      age:"", 
+      sex:"", 
+      height:"", 
+      weight:"", 
+      status:"",
     }
   },
 
@@ -82,36 +129,47 @@ export default {
     async onSubmit(e) {
       e.preventDefault();
  
-      if (!this.firstName || !this.lastName || !this.HCnumber || !this.phone || !this.email) {
-        alert("All fields are mandatory");
-        return;
-      }
+      // if (!this.HCnumber ||!this.firstName || !this.lastName || !this.phoneNumber || !this.email ||!this.address || !this.age ||!this.sex || !this.height || !this.weight || !this.status) {
+      //   alert("All fields are mandatory");
+      //   return;
+      // }
  
       const newContact = {
+        HCNumber: this.HCNumber,
         firstName: this.firstName,
         lastName: this.lastName,
+        phoneNumber: this.phoneNumber,
         email: this.email,
-        HCnumber: this.HCnumber,
-        phone: this.phone
+        address: this.address, 
+        relations: this.relations, 
+        age: this.age, 
+        height: this.height, 
+        weight: this.weight,
+        status: this.status, 
+       
+       
         
       };
 
+      console.log(JSON.stringify(newContact));
       //CHANGE /API/CONTACTS TO NEW THING WHEN BACKEND IS CONNECTED
-      const res = await fetch("/api/contacts", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(newContact),
-      });
+      const res = await patientDataService.create(newContact);
  
-      const data = await res.json();
- 
+      //const data = await res.json();
+
+      console.log(res);
+      this.HCNumber="";
       this.firstName = "";
       this.lastName = "";
-      this.HCnumber="";
       this.email="";
-      this.phone = "";
+      this.phoneNumber = "";
+      this.address =""; 
+      this.relations=""; 
+      this.age=""; 
+      this.sex=""; 
+      this.height=""; 
+      this.weight=""; 
+      this.status=""; 
   
  
       document.querySelector("v-form").reset();

@@ -2,7 +2,11 @@ import http from "../http-common";
 
 class patientDataService {
     create(data) {
-        return http.post("/patient", data);
+        try{
+            return http.post("/patient", data);
+        }catch(ex){
+            console.log(ex.message);
+        }
     }
     findAll() {
         return http.get("/patient")
