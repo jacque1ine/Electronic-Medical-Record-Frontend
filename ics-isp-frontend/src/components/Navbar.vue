@@ -16,6 +16,9 @@
         <MDBNavbarItem to="lab-reports">
           Lab Reports
         </MDBNavbarItem>
+         <MDBNavbarItem to="/newpatient" active>
+          Add Patient
+        </MDBNavbarItem>
       </MDBNavbarNav>
       <!-- Search form -->
       <form class="d-flex input-group w-auto">
