@@ -58,9 +58,10 @@ export default {
   methods: {
     async auth() {
       const authname = await userDataService.findByCred(this.username,this.password);
-      console.log(authname);
+      console.log(authname + " Success");
     }
-  }
+  },
+  
 }
 </script>
 
