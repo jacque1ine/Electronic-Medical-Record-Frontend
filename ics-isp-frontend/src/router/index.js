@@ -32,7 +32,27 @@ const routes = [
     name: 'newpatient',
     component: () => import(/* webpackChunkName: "about" */ '../views/NewPatient.vue')
 
-  }
+  },
+  {
+    path: '/patient-profile/:HCNumber',
+    name: 'patientProfile',
+    component: () => import(/* webpackChunkName: "about" */ '../views/PatientProfile.vue')
+  },
+  {
+    path: '/patient-details/:HCNumber',
+    name: 'patientDetails',
+    component: () => import(/* webpackChunkName: "about" */ '../views/PatientDetails.vue')
+  },
+  {
+    path: '/visit-history/:HCNumber',
+    name: 'visitHistory',
+    component: () => import(/* webpackChunkName: "about" */ '../views/VisitHistory.vue')
+  },
+  {
+    path: '/lab-records',
+    name: 'labRecords',
+    component: () => import(/* webpackChunkName: "about" */ '../views/LabRecordList.vue')
+  },
 ]
 
 const router = createRouter({
@@ -41,3 +61,4 @@ const router = createRouter({
 })
 
 export default router
+
