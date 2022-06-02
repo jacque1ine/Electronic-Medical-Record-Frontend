@@ -1,38 +1,52 @@
 <template>
-  <v-container fluid>
+  <v-container>
+    <v-card-title>
+      <v-avatar color="red">
+        <span class="white--text text-h5">{{patientInitial}}</span>
+      </v-avatar>
+      <span class="ml-3 font-weight-bold" v-html="patientFullName"></span>
+    </v-card-title>
+
+    <v-divider dark></v-divider>
+
+
+
     <v-form ref="form" lazy-validation>
       <v-row align="center"
           justify="center">
-          <v-col  cols="12"  sm="6"  md="3">
+          <v-col  cols="12" sm="6" md="6">
             <v-btn
               color="success"
               block
               xlarge
-              @click="patientInfo">
+              height="70"
+              @click="viewPatientInfo">
               Patient Info
             </v-btn>
           </v-col>
       </v-row>
       <v-row align="center"
           justify="center">
-          <v-col  cols="12"  sm="6"  md="3">
+          <v-col  cols="12"  sm="6"  md="6">
             <v-btn
               color="success"
               block
+              height="70"
               xlarge
-              @click="latestVisits">
+              @click="viewVisitHistory">
               Vist History
             </v-btn>
           </v-col>
       </v-row>
       <v-row align="center"
           justify="center">
-          <v-col  cols="12"  sm="6"  md="3">
+          <v-col  cols="12"  sm="6"  md="6">
             <v-btn
               color="success"
+              height="70"
               block
               xlarge
-              @click="labRecords">
+              @click="viewLabRecords">
               Lab Records
             </v-btn>
           </v-col>
@@ -42,18 +56,47 @@
 </template>
 
 <script>
+
+import patientDataService from "../services/patientDataService";
+
 export default {
   name: 'PatientProfile',
-  methods: {
-    patientInfo(){
-        this.$router.push({ name: 'PatientInfo' });
+  data(){
+    return {
+      patientInfo: null
+    };
+  },
+  computed:{
+    patientInitial(){
+      if(!this.patientInfo || !this.patientInfo.firstName || !this.patientInfo.lastName)
+        return '';
+
+      return this.patientInfo.firstName.substring(0,1).toUpperCase() + this.patientInfo.lastName.substring(0, 1).toUpperCase();
     },
-    latestVisits(){
-        this.$router.push({ name: 'VisitHistory' });
-    },
-    labRecords(){
-        this.$router.push({ name: 'LabRecords' });
+    patientFullName(){
+      if(!this.patientInfo)
+        return '';
+
+      return `${this.patientInfo.firstName} ${this.patientInfo.lastName}`;
     }
+  },
+  methods: {
+    viewPatientInfo(){
+        this.$router.push({ name: 'patientDetails', params: {'HCNumber': this.patientInfo.HCNumber} });
+    },
+    viewVisitHistory(){
+        this.$router.push({ name: 'visitHistory', params: {'HCNumber': this.patientInfo.HCNumber} });
+    },
+    viewLabRecords(){
+        this.$router.push({ name: 'labRecords' });
+    }
+  },
+  async created(){
+    const hcNumber = this.$route.params.HCNumber;
+
+    // Retrieve the patient's full name
+    const res = await patientDataService.get(hcNumber);
+    this.patientInfo = res.data;
   }
 };
 </script>
