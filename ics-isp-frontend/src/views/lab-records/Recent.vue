@@ -10,6 +10,7 @@
         <th scope="col">Health Number</th>
         <th scope="col">Result</th>
         <th scope="col">Notes</th>
+        <th>&nbsp;</th>
       </tr>
       </thead>
       <tbody>
@@ -18,6 +19,7 @@
         <th>{{ record.patientHCNumber }}</th>
         <th>{{ record.result }}</th>
         <th>{{ record.notes }}</th>
+        <th><a :href="'/lab-records/edit/'+record._id ">Edit</a></th>
       </tr>
       </tbody>
     </table>
@@ -27,6 +29,7 @@
 
 <script>
 import labRecordDataService from "@/services/labRecDataService";
+import router from "@/router";
 export default {
   name: "Recent",
   data(){
@@ -36,6 +39,7 @@ export default {
   },
   async mounted(){
     this.records = await labRecordDataService.findAll();
+
   }
 }
 </script>

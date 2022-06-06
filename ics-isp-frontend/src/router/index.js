@@ -53,6 +53,16 @@ const routes = [
     name: 'lab_records',
     component: () => import(/* webpackChunkName: "about" */ '../views/lab-records/Recent.vue')
   },
+  {
+    path: '/lab-records/create',
+    name: 'create_lab_record',
+    component: () => import(/* webpackChunkName: "about" */ '../views/lab-records/Create.vue')
+  },
+  {
+    path: '/lab-records/edit/:id',
+    name: 'edit_lab_record',
+    component: () => import(/* webpackChunkName: "about" */ '../views/lab-records/Edit.vue')
+  },
 ]
 
 const router = createRouter({

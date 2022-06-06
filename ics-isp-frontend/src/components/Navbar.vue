@@ -24,6 +24,7 @@
             >
             <MDBDropdownMenu aria-labelledby="dropdownMenuButton">
               <MDBDropdownItem to="/lab-records">View All</MDBDropdownItem>
+              <MDBDropdownItem to="/lab-records/create">Create Record</MDBDropdownItem>
             </MDBDropdownMenu>
           </MDBDropdown>
         </MDBNavbarItem>
