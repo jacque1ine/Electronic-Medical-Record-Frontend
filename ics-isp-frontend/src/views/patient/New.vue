@@ -1,6 +1,7 @@
 <template>
 
 <div class = "container mt-10">
+  <h1>Add a New Patient</h1>
   <v-form ref="form"
     v-model="valid"
     lazy-validation
@@ -9,7 +10,7 @@
     <v-text-field
       v-model="HCNumber"
       name="HCNumber"
-      label="HCNumber"
+      label="Health Card Number"
       required
     ></v-text-field>
 
@@ -37,49 +38,49 @@
      <v-text-field
       v-model="email"
       name="email"
-      label="email"
+      label="Email"
       required
     ></v-text-field>
     
      <v-text-field
       v-model="address"
       name="address"
-      label="address"
+      label="Address"
       required
     ></v-text-field>
     
     <v-text-field
       v-model="relations"
       name="relations"
-      label="relations"
+      label="Relations"
       required
     ></v-text-field>
 
     <v-text-field
       v-model="age"
       name="age"
-      label="age"
+      label="Age"
       required
     ></v-text-field>
   
     <v-text-field
       v-model="sex"
       name="sex"
-      label="sex"
+      label="Sex"
       required
     ></v-text-field>
 
     <v-text-field
       v-model="height"
       name="height"
-      label="height"
+      label="Height"
       required
     ></v-text-field>
 
     <v-text-field
       v-model="weight"
       name="weight"
-      label="weight"
+      label="Weight"
       required
     ></v-text-field>
 
