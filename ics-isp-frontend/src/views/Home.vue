@@ -22,20 +22,24 @@
         <div class="card">
           <h5 class="card-header">Upcoming Appointments</h5>
           <div class="card-body">
-
+            <UpcomingAppointments/>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-
+<br>
 
 </template>
 
 <script>
+import UpcomingAppointments from "@/components/UpcomingAppointments";
 export default {
-  name: "Home"
+  name: "Home",
+  components: {
+    UpcomingAppointments
+  }
 }
 </script>
 
