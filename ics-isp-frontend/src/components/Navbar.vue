@@ -13,9 +13,21 @@
         <MDBNavbarItem to="/calendar">
           Calendar
         </MDBNavbarItem>
-        <MDBNavbarItem to="lab-reports">
-          Lab Reports
+        <MDBNavbarItem>
+          <!-- Navbar dropdown -->
+          <MDBDropdown class="nav-item" v-model="dropdown2">
+            <MDBDropdownToggle
+                tag="a"
+                class="nav-link"
+                @click="dropdown2 = !dropdown2"
+            >Lab Records</MDBDropdownToggle
+            >
+            <MDBDropdownMenu aria-labelledby="dropdownMenuButton">
+              <MDBDropdownItem to="/lab-records">View All</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
         </MDBNavbarItem>
+
         <MDBNavbarItem>
           <!-- Navbar dropdown -->
           <MDBDropdown class="nav-item" v-model="dropdown1">
@@ -80,9 +92,11 @@ export default {
   setup() {
     const collapse1 = ref(false);
     const dropdown1 = ref(false);
+    const dropdown2 = ref(false);
     return {
       collapse1,
-      dropdown1
+      dropdown1,
+      dropdown2
     }
   }
 };

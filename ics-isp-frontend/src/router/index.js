@@ -50,8 +50,8 @@ const routes = [
   },
   {
     path: '/lab-records',
-    name: 'labRecords',
-    component: () => import(/* webpackChunkName: "about" */ '../views/LabRecordList.vue')
+    name: 'lab_records',
+    component: () => import(/* webpackChunkName: "about" */ '../views/lab-records/Recent.vue')
   },
 ]
 
