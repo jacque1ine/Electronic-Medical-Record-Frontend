@@ -105,7 +105,7 @@
 </template>
  
 <script>
-import patientDataService from "../services/patientDataService";
+import patientDataService from "../../services/patientDataService";
 export default {
   data(){
     return  {

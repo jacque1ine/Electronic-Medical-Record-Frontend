@@ -16,8 +16,19 @@
         <MDBNavbarItem to="lab-reports">
           Lab Reports
         </MDBNavbarItem>
-         <MDBNavbarItem to="/newpatient" active>
-          Add Patient
+        <MDBNavbarItem>
+          <!-- Navbar dropdown -->
+          <MDBDropdown class="nav-item" v-model="dropdown1">
+            <MDBDropdownToggle
+                tag="a"
+                class="nav-link"
+                @click="dropdown1 = !dropdown1"
+            >Patients</MDBDropdownToggle
+            >
+            <MDBDropdownMenu aria-labelledby="dropdownMenuButton">
+              <MDBDropdownItem to="/patient/new">Add Patient</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
         </MDBNavbarItem>
       </MDBNavbarNav>
       <!-- Search form -->

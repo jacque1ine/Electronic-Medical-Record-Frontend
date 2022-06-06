@@ -23,25 +23,25 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/Search.vue')
   }, 
   {
-    path: '/patientinfo',
-    name: 'patientinfo',
-    component: () => import(/* webpackChunkName: "about" */ '../views/PatientInfo.vue')
+    path: '/patient/info',
+    name: 'patient_info',
+    component: () => import(/* webpackChunkName: "about" */ '../views/patient/Info.vue')
   }, 
   {
-    path: '/newpatient',
-    name: 'newpatient',
-    component: () => import(/* webpackChunkName: "about" */ '../views/NewPatient.vue')
+    path: '/patient/new',
+    name: 'new_patient',
+    component: () => import(/* webpackChunkName: "about" */ '../views/patient/New.vue')
 
   },
   {
-    path: '/patient-profile/:HCNumber',
+    path: '/patient/profile/:HCNumber',
     name: 'patientProfile',
-    component: () => import(/* webpackChunkName: "about" */ '../views/PatientProfile.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/patient/Profile.vue')
   },
   {
-    path: '/patient-details/:HCNumber',
+    path: '/patient/details/:HCNumber',
     name: 'patientDetails',
-    component: () => import(/* webpackChunkName: "about" */ '../views/PatientDetails.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/patient/Details.vue')
   },
   {
     path: '/visit-history/:HCNumber',
