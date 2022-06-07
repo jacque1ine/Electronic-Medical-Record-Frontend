@@ -1,6 +1,11 @@
 <template>
   <MDBNavbar expand="lg" light bg="light" container>
-    <MDBNavbarBrand href="#">EMR</MDBNavbarBrand>
+    <MDBNavbarBrand to="/home">
+    
+    <img src="dlomedlogo.png" height="100">
+    
+    
+    </MDBNavbarBrand>
     <MDBNavbarToggler
         @click="collapse1 = !collapse1"
         target="#navbarSupportedContent"
