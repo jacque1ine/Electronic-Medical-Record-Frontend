@@ -73,6 +73,18 @@ const routes = [
     name: 'edit_lab_report',
     component: () => import(/* webpackChunkName: "about" */ '../views/visit-reports/View.vue')
   },
+  
+  {
+    path: '/staff',
+    name: 'all_staff',
+    component: () => import(/* webpackChunkName: "about" */ '../views/user/AllUsers.vue')
+  }, 
+
+  {
+    path: '/staff/new',
+    name: 'new_staff',
+    component: () => import(/* webpackChunkName: "about" */ '../views/user/NewUser.vue')
+  }, 
 ]
 
 const router = createRouter({

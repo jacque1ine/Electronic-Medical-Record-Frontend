@@ -7,9 +7,11 @@
     ></MDBNavbarToggler>
     <MDBCollapse v-model="collapse1" id="navbarSupportedContent">
       <MDBNavbarNav class="mb-2 mb-lg-0">
+
         <MDBNavbarItem to="/" active>
           Home
         </MDBNavbarItem>
+
         <MDBNavbarItem to="/calendar">
           Calendar
         </MDBNavbarItem>
@@ -28,6 +30,9 @@
             </MDBDropdownMenu>
           </MDBDropdown>
         </MDBNavbarItem>
+
+
+
         <MDBNavbarItem>
           <!-- Navbar dropdown -->
           <MDBDropdown class="nav-item" v-model="dropdown3">
@@ -43,6 +48,7 @@
             </MDBDropdownMenu>
           </MDBDropdown>
         </MDBNavbarItem>
+
         <MDBNavbarItem>
           <!-- Navbar dropdown -->
           <MDBDropdown class="nav-item" v-model="dropdown1">
@@ -58,6 +64,24 @@
             </MDBDropdownMenu>
           </MDBDropdown>
         </MDBNavbarItem>
+
+        <MDBNavbarItem>
+      
+          <MDBDropdown class="nav-item" v-model="dropdown4">
+            <MDBDropdownToggle
+                tag="a"
+                class="nav-link"
+                @click="dropdown4 = !dropdown4"
+            >Staff</MDBDropdownToggle
+            >
+            <MDBDropdownMenu aria-labelledby="dropdownMenuButton">
+              <MDBDropdownItem to="/staff">View All</MDBDropdownItem>
+              <MDBDropdownItem to="/staff/new">Add Staff</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
+        </MDBNavbarItem>
+
+
       </MDBNavbarNav>
     </MDBCollapse>
   </MDBNavbar>
@@ -98,11 +122,13 @@ export default {
     const dropdown1 = ref(false);
     const dropdown2 = ref(false);
     const dropdown3 = ref(false);
+    const dropdown4 = ref(false);
     return {
       collapse1,
       dropdown1,
       dropdown2,
-      dropdown3
+      dropdown3,
+      dropdown4
     }
   }
 };
