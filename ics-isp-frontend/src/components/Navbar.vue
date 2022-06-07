@@ -1,8 +1,9 @@
 <template>
   <MDBNavbar expand="lg" light bg="light" container>
     <MDBNavbarBrand to="/home">
+    <img src="dlomed.png" height="50">
     
-    <img src="dlomedlogo.png" height="100">
+    <!-- <v-img src="../assets/dlomedlogo.png" height="100"></v-img> -->
     
     
     </MDBNavbarBrand>
@@ -13,7 +14,7 @@
     <MDBCollapse v-model="collapse1" id="navbarSupportedContent">
       <MDBNavbarNav class="mb-2 mb-lg-0">
 
-        <MDBNavbarItem to="/" active>
+        <MDBNavbarItem to="/home" active>
           Home
         </MDBNavbarItem>
 
