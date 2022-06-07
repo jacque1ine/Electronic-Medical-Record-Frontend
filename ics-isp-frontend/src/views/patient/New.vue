@@ -83,14 +83,6 @@
       label="Weight"
       required
     ></v-text-field>
-
-    <!-- <v-text-field
-      v-model="status"
-      name="status"
-      label="status"
-      required
-    ></v-text-field> -->
-
  
     <v-btn
       input type="submit" 
@@ -127,6 +119,8 @@ export default {
 
 
   methods: {
+
+
     async onSubmit(e) {
       e.preventDefault();
  
@@ -147,16 +141,16 @@ export default {
         height: this.height, 
         weight: this.weight,
         status: "Absent", 
+        prescription: [], 
        
        
         
       };
 
       console.log(JSON.stringify(newContact));
-      //CHANGE /API/CONTACTS TO NEW THING WHEN BACKEND IS CONNECTED
+    
       const res = await patientDataService.create(newContact);
  
-      //const data = await res.json();
 
       console.log(res);
       this.HCNumber="";
@@ -170,8 +164,7 @@ export default {
       this.sex=""; 
       this.height=""; 
       this.weight=""; 
-      // this.status=""; 
-  
+     
  
       document.querySelector("v-form").reset();
     }
