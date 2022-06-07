@@ -70,7 +70,7 @@ const routes = [
   },
   {
     path: '/visit-reports/view/:id',
-    name: 'edit_lab_record',
+    name: 'edit_lab_report',
     component: () => import(/* webpackChunkName: "about" */ '../views/visit-reports/View.vue')
   },
 ]
