@@ -21,24 +21,24 @@
       required
     ></v-text-field>
 
-    <v-text-field
+    <!-- <v-text-field
       v-model="password"
       name="password"
       label="password"
       required
-    ></v-text-field>
+    ></v-text-field> -->
 
- <!-- <v-text-field
-            v-model="password"
-            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-            :rules="[rules.required, rules.min]"
-            :type="show1 ? 'text' : 'password'"
-            name="input-10-1"
-            label="Normal with hint text"
-            hint="At least 8 characters"
-            counter
-            @click:append="show1 = !show1"
-          ></v-text-field> -->
+    <v-text-field   
+        v-model="password"
+        :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+        :rules="[rules.required, rules.min]"
+        :type="show1 ? 'text' : 'password'"
+         name="input-10-1"
+        label="Enter Password"
+        hint="At least 8 characters"
+        counter
+        @click:append="show1 = !show1"
+    ></v-text-field> 
 
 
       <v-text-field
@@ -77,7 +77,11 @@ export default {
     return  {
       doctorID: "",
       signInID: "",
+      show1: false, 
       password: "",
+       rules: {
+          min: v => v.length >= 8 || 'Min 8 characters',
+        },
       doctorFirstName: "",
       doctorLastName: "",
     }
@@ -102,8 +106,6 @@ export default {
         doctorFirstName: this.doctorFirstName,
         doctorLastName: this.doctorLastName,
         isAdmin: true
-       
-       
         
       };
 
