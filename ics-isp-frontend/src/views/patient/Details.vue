@@ -2,10 +2,7 @@
   <v-container>
     <v-card>
       <v-card-title>
-        <v-avatar color="red">
-          <span class="white--text text-h5">{{patientInitial}}</span>
-        </v-avatar>
-        <span class="ml-3 font-weight-bold" v-html="patientFullName"></span>
+        <span class="ml-3 font-weight-bold">{{patientInfo.firstName}} {{patientInfo.lastName}}</span>
 
         <v-spacer></v-spacer>
         <v-btn class="float-right" color="red" @click="goBack">Back</v-btn>
@@ -16,16 +13,6 @@
       <v-card-title>
         <span>HC Number: </span>
         <span class="ml-3">{{patientInfo.HCNumber}}</span>
-      </v-card-title>
-
-      <v-card-title>
-        <span>First name: </span>
-        <span class="ml-3">{{patientInfo.firstName}}</span>
-      </v-card-title>
-
-      <v-card-title>
-        <span>Last name: </span>
-        <span class="ml-3">{{patientInfo.lastName}}</span>
       </v-card-title>
 
       <v-card-title>
@@ -80,19 +67,8 @@ export default {
   name: 'PatientDetails',
   data(){
     return {
-      patientInfo: {
-        firstName: '',
-        lastName: ''
-      }
+      patientInfo: {}
     };
-  },
-  computed:{
-    patientInitial(){
-      return this.patientInfo.firstName.substring(0,1).toUpperCase() + this.patientInfo.lastName.substring(0, 1).toUpperCase();
-    },
-    patientFullName(){
-      return `${this.patientInfo.firstName} ${this.patientInfo.lastName}`;
-    }
   },
   methods: {
     goBack(){
@@ -101,6 +77,12 @@ export default {
       }else{
         this.$router.push('/');
       }
+    },
+    patientInitial(){
+      return this.patientInfo.firstName.substring(0,1).toUpperCase() + this.patientInfo.lastName.substring(0, 1).toUpperCase();
+    },
+    patientFullName(){
+      return `${this.patientInfo.firstName} ${this.patientInfo.lastName}`;
     }
   },
   async created(){
@@ -109,6 +91,7 @@ export default {
     // Retrieve the patient's full name
     const res = await patientDataService.get(hcNumber);
     this.patientInfo = res.data;
+    console.log(this.patientInfo);
   }
 };
 </script>

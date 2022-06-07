@@ -21,22 +21,17 @@ const routes = [
     path: '/search',
     name: 'search',
     component: () => import(/* webpackChunkName: "about" */ '../views/Search.vue')
-  }, 
+  },
   {
-    path: '/patient/info',
-    name: 'patient_info',
-    component: () => import(/* webpackChunkName: "about" */ '../views/patient/Info.vue')
-  }, 
+    path: '/patients',
+    name: 'all_patients',
+    component: () => import(/* webpackChunkName: "about" */ '../views/patient/ListAll.vue')
+  },
   {
     path: '/patient/new',
     name: 'new_patient',
     component: () => import(/* webpackChunkName: "about" */ '../views/patient/New.vue')
 
-  },
-  {
-    path: '/patient/profile/:HCNumber',
-    name: 'patientProfile',
-    component: () => import(/* webpackChunkName: "about" */ '../views/patient/Profile.vue')
   },
   {
     path: '/patient/details/:HCNumber',

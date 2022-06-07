@@ -53,6 +53,7 @@
             >Patients</MDBDropdownToggle
             >
             <MDBDropdownMenu aria-labelledby="dropdownMenuButton">
+              <MDBDropdownItem to="/patients">View All</MDBDropdownItem>
               <MDBDropdownItem to="/patient/new">Add Patient</MDBDropdownItem>
             </MDBDropdownMenu>
           </MDBDropdown>
