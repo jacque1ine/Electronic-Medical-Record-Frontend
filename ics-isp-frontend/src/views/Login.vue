@@ -65,10 +65,12 @@ export default {
         console.log(this.username + "" + this.password)
         console.log(authname.data[0]);
         sessionStorage.setItem("user", JSON.stringify(authname.data[0]));
+        this.$router.push({ name: 'home' }) 
       }
 
     }
   },
+
 }
 </script>
 
