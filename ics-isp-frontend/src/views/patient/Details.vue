@@ -54,8 +54,10 @@
         <span>Status: </span>
         <span class="ml-3">{{patientInfo.status}}</span>
       </v-card-title>
+      <br>
+      <button class="btn btn-danger" @click="remove">Delete</button>
+      <br>
     </v-card>
-
   </v-container>
 </template>
 
@@ -83,6 +85,11 @@ export default {
     },
     patientFullName(){
       return `${this.patientInfo.firstName} ${this.patientInfo.lastName}`;
+    },
+    async remove(){
+      const res = await patientDataService.delete(this.$route.params.HCNumber);
+      window.location.href = "/patients"
+
     }
   },
   async created(){
