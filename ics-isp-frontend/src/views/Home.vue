@@ -5,18 +5,7 @@
     <hr>
     <div class="row">
       <div class="col align-self-start">
-        <div class="card">
-          <h5 class="card-header">Recent Patients</h5>
-          <div class="card-body">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Patient Name</h5>
-                <p class="card-text">Visit notes.</p>
-                <a href="#" class="btn btn-primary">Review</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <RecentPatients/>
       </div>
       <div class="col align-self-center">
         <div class="card">
@@ -35,10 +24,12 @@
 
 <script>
 import UpcomingAppointments from "@/components/UpcomingAppointments";
+import RecentPatients from "@/components/RecentPatients";
 export default {
   name: "Home",
   components: {
-    UpcomingAppointments
+    UpcomingAppointments,
+    RecentPatients
   }
 }
 </script>
