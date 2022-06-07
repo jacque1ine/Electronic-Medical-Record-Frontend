@@ -20,6 +20,9 @@ class patientDataService {
     delete(HCNumber) {
         return http.delete(`/patient/${HCNumber}`);
     }
+    updatePresc(HCNumber,prescName) {
+        return http.put(`/patient/${HCNumber}/${prescName}`);
+    }
 }
 
 export default new patientDataService();
