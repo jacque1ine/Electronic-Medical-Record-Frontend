@@ -1,25 +1,24 @@
 <template>
-  <div class="login">
-    <v-container>
+<body>
+  <div class="login mt-10">
+    <v-container >
       <div class="login-pane">
-
+        <!-- <v-toolbar dark color="primary"> -->
         <v-card>
           <v-card-title>Login</v-card-title>
-
           <v-card-text>
             <v-text-field
-
                 label="Username"
                 hide-details="auto"
                 v-model="username"
-            ></v-text-field>
+            >
+            </v-text-field>
             <br>
             <v-text-field
                 counter
                 label="Password"
                 type="password"
                 v-model="password"
-
                 hide-details="auto"
             ></v-text-field>
             <br>
@@ -30,14 +29,18 @@
             >
               Submit
             </v-btn>
-
           </v-card-text>
-
         </v-card>
-
+        <!-- </v-toolbar> -->
       </div>
     </v-container>
   </div>
+</body>
+
+
+
+
+
 </template>
 
 <script>
@@ -75,10 +78,10 @@ export default {
 </script>
 
 <style scoped>
-.login{
-  background-color: #1867C0;
-}
-.login-pane{
 
+body{
+  /* background-color: lightblue; */
 }
+
+
 </style>
