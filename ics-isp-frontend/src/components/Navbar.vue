@@ -28,7 +28,21 @@
             </MDBDropdownMenu>
           </MDBDropdown>
         </MDBNavbarItem>
-
+        <MDBNavbarItem>
+          <!-- Navbar dropdown -->
+          <MDBDropdown class="nav-item" v-model="dropdown3">
+            <MDBDropdownToggle
+                tag="a"
+                class="nav-link"
+                @click="dropdown3 = !dropdown3"
+            >Visit Reports</MDBDropdownToggle
+            >
+            <MDBDropdownMenu aria-labelledby="dropdownMenuButton">
+              <MDBDropdownItem to="/visit-reports">View All</MDBDropdownItem>
+              <MDBDropdownItem to="/visit-reports/create">Create Record</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
+        </MDBNavbarItem>
         <MDBNavbarItem>
           <!-- Navbar dropdown -->
           <MDBDropdown class="nav-item" v-model="dropdown1">
@@ -94,10 +108,12 @@ export default {
     const collapse1 = ref(false);
     const dropdown1 = ref(false);
     const dropdown2 = ref(false);
+    const dropdown3 = ref(false);
     return {
       collapse1,
       dropdown1,
-      dropdown2
+      dropdown2,
+      dropdown3
     }
   }
 };
