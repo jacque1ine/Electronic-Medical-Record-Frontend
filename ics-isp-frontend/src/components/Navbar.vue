@@ -1,9 +1,8 @@
 <template>
   <MDBNavbar expand="lg" light bg="light" container>
     <MDBNavbarBrand to="/home">
-    <img src="dlomed.png" height="50">
-    
-    <!-- <v-img src="../assets/dlomedlogo.png" height="100"></v-img> -->
+ 
+    <img src="https://bayviewglen-my.sharepoint.com/personal/jfung1_bayviewglen_ca/Documents/Grade%2012/dlomedlogo.png?Web=1" height="50">
     
     
     </MDBNavbarBrand>
@@ -95,6 +94,8 @@
 
 
 <script>
+
+
 import {
   MDBBtn,
   MDBNavbar,
