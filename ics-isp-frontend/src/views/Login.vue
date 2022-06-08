@@ -4,8 +4,12 @@
     <v-container >
       <div class="login-pane">
         <!-- <v-toolbar dark color="primary"> -->
+        <div class="align-items-center justify-content-center">
         <v-card>
-          <v-card-title>Login</v-card-title>
+         
+          <div class="d-flex align-items-center justify-content-center"><img src="https://bayviewglen-my.sharepoint.com/personal/jfung1_bayviewglen_ca/Documents/Grade%2012/dlomedlogo.png?Web=1" height="100">
+          
+          </div>
           <v-card-text>
             <v-text-field
                 label="Username"
@@ -32,6 +36,7 @@
           </v-card-text>
         </v-card>
         <!-- </v-toolbar> -->
+        </div>
       </div>
     </v-container>
   </div>
