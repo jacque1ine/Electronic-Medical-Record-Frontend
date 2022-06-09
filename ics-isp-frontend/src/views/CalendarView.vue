@@ -63,7 +63,6 @@
 <script>
 import calDataService from "@/services/calDataService"
 import 'v-calendar/dist/style.css'
-import patientDataService from "@/services/patientDataService"
 
 export default {
     name: 'Calendar',
@@ -74,8 +73,6 @@ export default {
         },
         attributes: [],
         focusedAppointments: [],
-
-        patient: [],
       }
     },
     methods: {
@@ -114,7 +111,7 @@ export default {
         return testData
       },
       refreshFocusedAppointments(day){
-        const comparedToDate = day.id
+        const comparedToDate = day.id //"2xxx-0x-0x"
 
         let focusedAppointments = []
 
@@ -142,8 +139,6 @@ export default {
     },    
     async mounted() {
       this.attributes = await this.getAttributes();
-
-      this.users = await calDataService.findAll()
     }
 }
 </script>
