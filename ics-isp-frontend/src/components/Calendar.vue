@@ -1,39 +1,157 @@
 <template>
-  <div class="text-center section">
-    <h2 class="h2">Custom Calendars</h2>
-    <p class="text-lg font-medium text-gray-600 mb-6">
-      Roll your own calendars using scoped slots
-    </p>
-    <v-calendar
-      class="custom-calendar max-w-full"
-      :masks="masks"
-      :attributes="attributes"
-      disable-page-swipe
-      is-expanded
+  <div>
+    <v-row
+      no-gutters
+      style="flex-wrap: nowrap;"
     >
-      <template v-slot:day-content="{ day, attributes }">
-        <div class="flex flex-col h-full z-10 overflow-hidden">
-          <span class="day-label text-sm text-gray-900">{{ day.day }}</span>
-          <div class="flex-grow overflow-y-auto overflow-x-auto">
-            <p
-              v-for="attr in attributes"
-              :key="attr.key"
-              class="text-xs leading-tight rounded-sm p-1 mt-0 mb-1"
-              :class="attr.customData.class"
-            >
-              {{ attr.customData.title }}
-            </p>
-          </div>
+      <v-col
+        cols='10'
+        style="min-width: 55%; "
+        class='flex-grow-0 flex-shrink-1'
+      >
+        <div>
+          <v-calendar
+            class="custom-calendar max-w-full"
+            :masks="masks"
+            :attributes="attributes"
+            disable-page-swipe
+            is-expanded
+          >
+            <template #day-popover="{ day, dayTitle, attributes }">
+              <div class="text-xs text-gray-300 font-semibold text-center">
+                {{ dayTitle }}
+              </div>
+
+              <v-hover
+              v-slot="{ hover }"
+              >
+                <div class="text-{{hover ? secondary : white}}">
+                  <button @click="refreshFocusedAppointments(day)" :color="hover ? secondary : white">
+                    You have {{attributes.length}} appointment(s) scheduled
+                  </button>
+                </div>
+              </v-hover>
+
+
+            </template>
+          </v-calendar>
         </div>
-      </template>
-    </v-calendar>
+      </v-col>
+      <v-col
+        cols="4"
+        style="min-width: 100px; max-width: 100%;"
+        class="flex-grow-1 flex-shrink-0"
+      >
+        <div class="d-flex flex-column">
+          <v-card v-for="appointment in focusedAppointments" :key="appointment" min-width="344">
+            <v-card-text>
+              <p class="text-h4">
+                {{appointment.customData.appointmentTitle}}
+              </p>
+              <p>{{appointment.dates.getHours()}}:{{appointment.dates.getMinutes()}}</p>
+              <div class="text--primary">
+                {{appointment.customData.appointmentdesc}}
+              </div>
+            </v-card-text>
+          </v-card>
+        </div>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
 <script>
 import calDataService from "@/services/calDataService"
+import 'v-calendar/dist/style.css'
+import patientDataService from "@/services/patientDataService"
 
 export default {
-    name: 'Calendar'
+    name: 'Calendar',
+    data() {
+      return{
+        masks: {
+          weekdays: 'WWW',
+        },
+        attributes: [],
+        focusedAppointments: [],
+
+        patient: [],
+      }
+    },
+    methods: {
+      test(data) {
+        console.log(data)
+      },
+      async getAttributes(){
+        let rawAttributes = await calDataService.findAll();
+        console.log(rawAttributes)
+        rawAttributes = rawAttributes.data
+
+        console.log(rawAttributes);
+
+        let testData = [];
+        rawAttributes.forEach(data => {
+          
+          const colors = ['gray', 'red', 'orange', 'yellow', 'green', 'teal', 'blue', 'indigo', 'purple', 'pink']
+
+          const newDate = {
+            key: data._id,
+            dot: {
+              color: colors[Math.floor(Math.random()*colors.length)]
+            },
+            
+            customData: {
+              appointmentTitle: data.appointmentTitle,
+              patientHCNumber: data.patientHCNumber,
+              appointmentdesc: data.appointmentdesc,
+              notes: data.notes,
+              class: 'bg-secondary', 
+              hour: new Date(data.dateTime).getHours(),
+              minute: new Date(data.dateTime).getMinutes(),
+            },
+            dates: new Date(data.dateTime),
+            popover: true,
+          }
+          testData.push(newDate)
+        })
+
+        testData.sort((a, b) => { return Date.parse(a.dates) - Date.parse(b.dates) } )
+        return testData
+      },
+      refreshFocusedAppointments(day){
+        const comparedToDate = day.id
+        
+        console.log(comparedToDate)
+
+        let focusedAppointments = []
+
+        this.attributes.forEach(data => {
+          const date = new Date(data.dates)
+          const year = date.getFullYear()
+          let month = date.getMonth()+1
+
+          if (month < 10){
+            month = "0" + month
+          }          
+          let day = date.getDate()
+          if (day < 10){
+            day = "0" + day
+          }
+
+          const dateString = year + "-" + month + "-" + day
+
+          if (dateString === comparedToDate){
+            focusedAppointments.push(data)
+          }
+        })
+        this.focusedAppointments = focusedAppointments
+        console.log(this.focusedAppointments)
+      }
+    },    
+    async mounted() {
+      this.attributes = await this.getAttributes();
+
+      this.users = await calDataService.findAll()
+    }
 }
 </script>

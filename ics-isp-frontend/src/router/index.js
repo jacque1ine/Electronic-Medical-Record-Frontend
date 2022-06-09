@@ -87,7 +87,13 @@ const routes = [
     path: '/staff/new',
     name: 'new_staff',
     component: () => import(/* webpackChunkName: "about" */ '../views/user/NewUser.vue')
-  }, 
+  },
+
+  {
+    path: '/test',
+    name: 'test',
+    component: () => import(/*webpackChunkName: "about" */ '../components/Calendar.vue')
+  }
 ]
 
 const router = createRouter({
